@@ -7,7 +7,7 @@ int main()
 {
     WrapperFMOD wrapper;
 
-    wrapper.play();
+    wrapper.Play();
 }
 
 // Per eseguire il programma: CTRL+F5 oppure Debug > Avvia senza eseguire debug

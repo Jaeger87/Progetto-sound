@@ -6,23 +6,56 @@
 #include "WrapperFMOD.h"
 
 
-void WrapperFMOD::play()
+void WrapperFMOD::InitSystem()
 {
-	FMOD_RESULT result;
+	FMOD::System_Create(&system);
+	system->init(100, FMOD_INIT_NORMAL, 0);
+}
 
-	result = FMOD::System_Create(&m_FMODSystem);
+void WrapperFMOD::LoadStatic(std::string audioPath)
+{
+}
+
+void WrapperFMOD::LoadStreaming(std::string audioPath)
+{
+}
+
+void WrapperFMOD::Play()
+{
+	if (!system)
+		return;
 	std::cout << "bella" << std::endl;
 }
 
-void WrapperFMOD::pause()
+void WrapperFMOD::Pause()
 {
 	std::cout << "bella" << std::endl;
 }
 
-void WrapperFMOD::stop()
+void WrapperFMOD::Stop()
 {
 }
 
-void WrapperFMOD::setVolume()
+void WrapperFMOD::SetLoop()
+{
+}
+
+void WrapperFMOD::SetOneShoot()
+{
+}
+
+void WrapperFMOD::PanLeft()
+{
+}
+
+void WrapperFMOD::PanRight()
+{
+}
+
+void WrapperFMOD::SetVolume()
+{
+}
+
+void WrapperFMOD::SetAudioChannel()
 {
 }

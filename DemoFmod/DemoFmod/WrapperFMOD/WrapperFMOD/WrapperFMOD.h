@@ -5,11 +5,19 @@
 
 class WrapperFMOD {
 
-	FMOD::System* m_FMODSystem = nullptr;
+	FMOD::System* system = nullptr;
 public:
-	void play();
-	void pause();
-	void stop();
+	void InitSystem();
+	void LoadStatic(std::string audioPath);
+	void LoadStreaming(std::string audioPath);
+	void Play();
+	void Pause();
+	void Stop();
 
-	void setVolume();
+	void SetLoop();
+	void SetOneShoot();
+	void PanLeft();
+	void PanRight();
+	void SetVolume();
+	void SetAudioChannel();
 };
