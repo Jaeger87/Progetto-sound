@@ -7,7 +7,12 @@ int main()
 {
     WrapperFMOD wrapper(10);
 
-    wrapper.Play(0,0);
+    if (!wrapper.isWrapperOk())
+    {
+
+    }
+
+    //wrapper.Play(0,0);
 }
 
 // Per eseguire il programma: CTRL+F5 oppure Debug > Avvia senza eseguire debug

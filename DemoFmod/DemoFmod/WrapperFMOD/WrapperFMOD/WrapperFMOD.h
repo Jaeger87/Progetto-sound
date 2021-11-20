@@ -2,27 +2,34 @@
 
 #include <fmod.hpp>
 #include <iostream>
+#include <map>
 
 class WrapperFMOD {
 
 	FMOD::System* system = nullptr;
 private:
-	const int CHANNELS;
+	const int CHANNELS_SIZE;
 	bool WrapperISOK = false;
+	FMOD::Channel** channels;
+	std::map<std::string, FMOD::Sound*> resources;
+	bool LoadAudio(std::string audioPath, std::string alias, bool streaming);
+	void Play(int channel, std::string alias, bool loop);
+	bool ChannelCheck(int channel);
 public:
 	WrapperFMOD(int CHANNELS);
 	bool isWrapperOk();
 	bool InitSystem();
-	void LoadStatic(int channel, std::string audioPath);
-	void LoadStreaming(int channel, std::string audioPath);
-	void Play(int channel, int sound);
-	void Pause();
-	void Stop();
+	
+	void LoadStatic(std::string audioPath, std::string alias);
+	void LoadStreaming(std::string audioPath, std::string alias);
 
-	void SetLoop();
-	void SetOneShoot();
-	void PanLeft(float pan);
-	void PanRight(float pan);
-	void SetVolume();
-	void SetAudioChannel();
+	void PlayOneShoot(int channel, std::string alias);
+	void PlayLoop(int channel, std::string alias);
+	void Pause(int channel);
+	void Stop(int channel);
+
+	void PanLeft(int channel, float pan);
+	void PanRight(int channel, float pan);
+	void SetVolume(int channel, float volume);
+	~WrapperFMOD();
 };
