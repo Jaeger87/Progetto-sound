@@ -12,7 +12,15 @@ int main()
 
     }
 
-    //wrapper.Play(0,0);
+    wrapper.LoadStatic("Media/Success.wav", "Success");
+
+
+
+    wrapper.PlayOneShoot(0, "Success");
+    while (true)
+    {
+    }
+
 }
 
 // Per eseguire il programma: CTRL+F5 oppure Debug > Avvia senza eseguire debug
