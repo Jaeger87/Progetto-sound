@@ -5,9 +5,9 @@
 
 int main()
 {
-    WrapperFMOD wrapper;
+    WrapperFMOD wrapper(10);
 
-    wrapper.Play();
+    wrapper.Play(0,0);
 }
 
 // Per eseguire il programma: CTRL+F5 oppure Debug > Avvia senza eseguire debug

@@ -6,18 +6,23 @@
 class WrapperFMOD {
 
 	FMOD::System* system = nullptr;
+private:
+	const int CHANNELS;
+	bool WrapperISOK = false;
 public:
-	void InitSystem();
-	void LoadStatic(std::string audioPath);
-	void LoadStreaming(std::string audioPath);
-	void Play();
+	WrapperFMOD(int CHANNELS);
+	bool isWrapperOk();
+	bool InitSystem();
+	void LoadStatic(int channel, std::string audioPath);
+	void LoadStreaming(int channel, std::string audioPath);
+	void Play(int channel, int sound);
 	void Pause();
 	void Stop();
 
 	void SetLoop();
 	void SetOneShoot();
-	void PanLeft();
-	void PanRight();
+	void PanLeft(float pan);
+	void PanRight(float pan);
 	void SetVolume();
 	void SetAudioChannel();
 };
