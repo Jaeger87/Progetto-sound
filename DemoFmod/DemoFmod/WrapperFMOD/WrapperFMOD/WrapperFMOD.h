@@ -25,6 +25,7 @@ public:
 
 	void PlayOneShoot(int channel, std::string alias);
 	void PlayLoop(int channel, std::string alias);
+	void Resume(int channel);
 	void Pause(int channel);
 	void Stop(int channel);
 
