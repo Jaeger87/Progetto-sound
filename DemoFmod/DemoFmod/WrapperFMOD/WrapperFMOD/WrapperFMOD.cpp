@@ -47,6 +47,7 @@ bool WrapperFMOD::LoadAudio(std::string audioPath, std::string alias, bool strea
 		return false;
 	}
 	resources[alias] = sound;
+	system->update();
 	return true;
 }
 
@@ -83,7 +84,9 @@ void WrapperFMOD::Play(int channel, std::string alias, bool loop)
 		sound->setMode(FMOD_LOOP_OFF);
 	
 	fmodChannel->stop();
-	FMOD_RESULT result = system->playSound(sound, 0, false, &channels[channel]);
+	system->update();
+	FMOD_RESULT result = system->playSound(sound, 0, false, &fmodChannel);
+	system->update();
 }
 
 bool WrapperFMOD::ChannelCheck(int channel)
@@ -112,6 +115,7 @@ void WrapperFMOD::Pause(int channel)
 	if (!ChannelCheck(channel))
 		return;
 	channels[channel]->setPaused(true);
+	system->update();
 }
 
 void WrapperFMOD::Stop(int channel)
@@ -119,6 +123,7 @@ void WrapperFMOD::Stop(int channel)
 	if (!ChannelCheck(channel))
 		return;
 	channels[channel]->stop();
+	system->update();
 }
 
 void WrapperFMOD::PanLeft(int channel, float pan)
@@ -126,6 +131,7 @@ void WrapperFMOD::PanLeft(int channel, float pan)
 	if (!ChannelCheck(channel))
 		return;
 	channels[channel]->setPan(-pan);
+	system->update();
 }
 
 void WrapperFMOD::PanRight(int channel, float pan)
@@ -133,6 +139,7 @@ void WrapperFMOD::PanRight(int channel, float pan)
 	if (!ChannelCheck(channel))
 		return;
 	channels[channel]->setPan(pan);
+	system->update();
 }
 
 void WrapperFMOD::SetVolume(int channel, float volume)
@@ -140,6 +147,7 @@ void WrapperFMOD::SetVolume(int channel, float volume)
 	if (!ChannelCheck(channel))
 		return;
 	channels[channel]->setVolume(volume);
+	system->update();
 }
 
 WrapperFMOD::~WrapperFMOD()
